@@ -27,12 +27,12 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
-	@GetMapping // Método para Listar todos os Usuários
+	@GetMapping // Método para Listar todos os Usuários | localhost:8080/usuarios
 	public ResponseEntity<List<Usuario>> listar() {
 		return ResponseEntity.ok(usuarioRepository.findAll());
 	}
 
-	@GetMapping("/{id}") // Método para listar usuário por ID
+	@GetMapping("/{id}") // Método para listar usuário por ID | localhost:8080/usuarios/id
 	public ResponseEntity<Usuario> buscar(@PathVariable Long id) {
 		Optional<Usuario> livroOpt = usuarioRepository.findById(id);
 		if (livroOpt.isPresent()) {
