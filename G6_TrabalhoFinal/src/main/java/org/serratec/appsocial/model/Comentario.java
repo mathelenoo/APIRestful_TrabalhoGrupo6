@@ -1,6 +1,6 @@
 package org.serratec.appsocial.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +15,7 @@ public class Comentario {
 	private Long id;
 
 	private String conteudo;
-	private Date dataCriacao;
+	private LocalDate dataCriacao;
 
 	@ManyToOne
 	private Postagem postagem;
@@ -38,11 +38,11 @@ public class Comentario {
 		this.conteudo = conteudo;
 	}
 
-	public Date getDataCriacao() {
+	public LocalDate getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriacao(Date dataCriacao) {
+	public void setDataCriacao(LocalDate dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 
