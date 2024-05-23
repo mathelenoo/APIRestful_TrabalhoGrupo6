@@ -1,93 +1,77 @@
 package org.serratec.appsocial.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
 
 @Entity
 public class Relacionamento implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+
 	@EmbeddedId
-	private RelacionamentoId id;
+	private RelacionamentoPK id = new RelacionamentoPK ();
 
-	@ManyToOne
-	@MapsId("seguidorId")
-	private Usuario seguidor;
+	private LocalDate dataCriacao;
 
-	@ManyToOne
-	@MapsId("seguidoId")
-	private Usuario seguido;
-
-	private Date dataCriacao;
-
-	// Getters e Setters
-
-	public RelacionamentoId getId() {
+	public RelacionamentoPK getId() {
 		return id;
 	}
 
-	public void setId(RelacionamentoId id) {
+	public void setId(RelacionamentoPK id) {
 		this.id = id;
 	}
 
-	public Usuario getSeguidor() {
-		return seguidor;
-	}
-
-	public void setSeguidor(Usuario seguidor) {
-		this.seguidor = seguidor;
-	}
-
-	public Usuario getSeguido() {
-		return seguido;
-	}
-
-	public void setSeguido(Usuario seguido) {
-		this.seguido = seguido;
-	}
-
-	public Date getDataCriacao() {
+	public LocalDate getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriacao(Date dataCriacao) {
+	public void setDataCriacao(LocalDate dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 
 	@Embeddable
-	public static class RelacionamentoId implements Serializable {
-		private Long seguidorId;
-		private Long seguidoId;
+	public static class RelacionamentoPK implements Serializable {
+		
+		
+		@ManyToOne
+		// @MapsId("seguidorId")
+		private Usuario seguidor;
+		
+		
+		@ManyToOne
+		// @MapsId("seguidoId")
+		private Usuario seguido;
+		
+		//getters and setters
 
-		public Long getSeguidorId() {
-			return seguidorId;
+		public Usuario getSeguidor() {
+			return seguidor;
 		}
 
-		// Getters, Setters,
-
-		public void setSeguidorId(Long seguidorId) {
-			this.seguidorId = seguidorId;
+		public void setSeguidor(Usuario seguidor) {
+			this.seguidor = seguidor;
 		}
 
-		public Long getSeguidoId() {
-			return seguidoId;
+		public Usuario getSeguido() {
+			return seguido;
 		}
 
-		public void setSeguidoId(Long seguidoId) {
-			this.seguidoId = seguidoId;
+		public void setSeguido(Usuario seguido) {
+			this.seguido = seguido;
 		}
 
 		@Override
 		public int hashCode() {
-			return Objects.hash(seguidoId, seguidorId);
+			return Objects.hash(seguido, seguidor);
 		}
-
-		// equals() e hashCode()
 
 		@Override
 		public boolean equals(Object obj) {
@@ -97,8 +81,8 @@ public class Relacionamento implements Serializable {
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
-			RelacionamentoId other = (RelacionamentoId) obj;
-			return Objects.equals(seguidoId, other.seguidoId) && Objects.equals(seguidorId, other.seguidorId);
+			RelacionamentoPK other = (RelacionamentoPK) obj;
+			return Objects.equals(seguido, other.seguido) && Objects.equals(seguidor, other.seguidor);
 		}
 
 	}

@@ -1,8 +1,10 @@
 package org.serratec.appsocial.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import org.serratec.appsocial.model.Relacionamento;
 import org.serratec.appsocial.model.Usuario;
 import org.serratec.appsocial.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,5 +66,23 @@ public class UsuarioController {
 		}
 		usuarioRepository.deleteById(id);
 		return ResponseEntity.noContent().build();
+	}
+
+	@PostMapping("/{id}/seguir/{idSeguir}") // Método para seguir
+	@ResponseStatus(HttpStatus.CREATED)
+
+	public Usuario createRelacionemento(@PathVariable Long id, @PathVariable Long idSeguir) {
+		Relacionamento relacionamento = new Relacionamento();
+		Optional<Usuario> usuarioSeguir = usuarioRepository.findById(idSeguir);
+		Optional<Usuario> usuario = usuarioRepository.findById(id);
+
+		relacionamento.getId().setSeguidor(usuario.get());
+		relacionamento.getId().setSeguido(usuarioSeguir.get());
+
+		relacionamento.setDataCriacao(LocalDate.now());
+
+		usuario.get().getSeguindo().add(relacionamento);
+
+		return usuarioRepository.save(usuario.get());
 	}
 }
