@@ -19,6 +19,4 @@ public class UsuarioService {
 	public Usuario salvar(Usuario usuario) {
 		return usuarioRepository.save(usuario);
 	}
-
-	// será que vamos precisar de algum construtor?
 }
