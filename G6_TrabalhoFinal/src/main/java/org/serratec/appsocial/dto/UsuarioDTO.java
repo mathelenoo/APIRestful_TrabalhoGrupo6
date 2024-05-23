@@ -6,80 +6,68 @@ import org.serratec.appsocial.model.Usuario;
 
 public class UsuarioDTO {
 
-    private Long id;
-    private String nome;
-    private String sobrenome;
-    private String email;
-    private String senha;
-    private LocalDate dataNascimento;
+	private Long id;
+	private String nome;
+	private String sobrenome;
+	private String email;
+	private LocalDate dataNascimento;
 
-    public UsuarioDTO() {
-    }
+	public UsuarioDTO() {
+	}
 
-    public UsuarioDTO(Long id, String nome, String sobrenome, String email, String senha, LocalDate dataNascimento) {
-        this.id = id;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.email = email;
-        this.senha = senha;
-        this.dataNascimento = dataNascimento;
-    }
+	public UsuarioDTO(Long id, String nome, String sobrenome, String email, LocalDate dataNascimento) {
+		this.id = id;
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.email = email;
+		this.dataNascimento = dataNascimento;
+	}
 
-    public UsuarioDTO(Usuario usuario) {
-        this.id = usuario.getId();
-        this.nome = usuario.getNome();
-        this.sobrenome = usuario.getSobrenome();
-        this.email = usuario.getEmail();
-        this.senha = usuario.getSenha();
-        this.dataNascimento = usuario.getDataNascimento();
-    }
+	public UsuarioDTO(Usuario usuario) {
+		this.id = usuario.getId();
+		this.nome = usuario.getNome();
+		this.sobrenome = usuario.getSobrenome();
+		this.email = usuario.getEmail();
+		this.dataNascimento = usuario.getDataNascimento();
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getSobrenome() {
-        return sobrenome;
-    }
+	public String getSobrenome() {
+		return sobrenome;
+	}
 
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
-    }
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getSenha() {
-        return senha;
-    }
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
 }
-
