@@ -2,6 +2,7 @@ package org.serratec.appsocial.service;
 
 import java.util.List;
 
+import org.serratec.appsocial.exception.UsuarioNotFound;
 import org.serratec.appsocial.model.Usuario;
 import org.serratec.appsocial.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,7 @@ public class UsuarioService {
 		return usuarioRepository.save(usuario);
 	}
 
-	// será que vamos precisar de algum construtor?
+	public Usuario buscarPorId(Long id) {
+		return usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNotFound(id));
+	}
 }
